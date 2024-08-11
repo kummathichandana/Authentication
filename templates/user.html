@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>User</title>
+</head>
+<body>
+   <from method="POST">{% csrf_token %}
+      <label for="name"></label>
+      <input name="name" id="name" type="text" placeholder='Name' required>
+      <button type="submit">Check</button>  
+   </form>
+   {% if res %}
+   <h2>Results:</h2>
+   <ul>
+       {% for user in res %}
+           <li>{{ user.username }}</li>
+       {% empty %}
+           <li>No users found.</li>
+       {% endfor %}
+   </ul>
+   {% endif %}
+   </body>
+</html>
